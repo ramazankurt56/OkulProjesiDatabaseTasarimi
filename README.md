@@ -9,8 +9,11 @@
 Persons tablosunu oluşturuyoruz. Buradaki amaçlarımız gereksiz veri tekrarından kaçınmak, Kod karmaşasını azaltmak ve veri konsistansını artırmaktır.
 Persons tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum.
 1)FirtsName alanı kullanıcının adı için kullanılır.
+
 2)LastName alanı kullanıcının soyadı için kullanılır.
+
 3)IdentityNumber kullanıcını TC kimlik numarası alanıdır.
+
 4)PhoneNumber kullanıcının telefon alanıdır.
 5)Email kullanıcının mail alanıdır.
 6)Birthday kullanıcının doğum tarihidir.
