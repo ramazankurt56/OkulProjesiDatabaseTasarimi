@@ -53,14 +53,23 @@ CREATE TABLE [dbo].[Persons](
 ```
 
 Teachers tablosu, öğretmenlerin ilgili alanlarını tutar.
+
 Teachers tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum. 
+
 1)PersonId alanımız Persons tablosu ile ilişki kurmamızı sağlar. Böylelikle Persons tablosundaki öğretmen kullanıcılarıyla ilişki kurabilir.
+
 2)YearsOfExperience alanı öğretmenin kaç yıl tecrübesi olduğunu belirtir.
+
 3)Branch öğretmenin ilgili olduğu dal alanıdır.
+
 4)Salary öğretmenin maaş alanıdır.
+
 5)Graduation öğretmenin mezun olduğu bölüm alanıdır.
+
 6)StartDate öğretmenin işe başlama tarih alanıdır.
+
 7)EndDate öğretmenin işten ayrılma tarih alanıdır.
+
 ```SQL
 CREATE TABLE [dbo].[Teachers](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -79,13 +88,21 @@ CREATE TABLE [dbo].[Teachers](
 ```
 
 Students tablosu, öğrencinin ilgili alanlarını tutar.
+
 Students tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum. 
+
 1)PersonId alanımız Persons tablosu ile ilişki kurmamızı sağlar. Böylelikle Persons tablosundaki öğrenci kullanıcılarıyla ilişki kurabilir.
+
 2)FatherName öğrencinin baba adı alanını tutar.
+
 3)MotherName öğrencinin anne adı alanını tutar.
+
 4)GraduationDate öğrencinin mezuniyet tarih alanıdır.
+
 5)EmergencyContact öğrenciye acil durumlarda ulaşım sağlamak için numara alanıdır.
+
 6)ClassRoomId öğrencinin hangi sınıfta olduğunu belirten alandır.
+
 ```SQL
 CREATE TABLE [dbo].[Students](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -103,16 +120,27 @@ CREATE TABLE [dbo].[Students](
 ```
 
 Addresses tablosu, Kullanıcı adreslerinin ilgili alanlarını tutar.
+
 Addresses tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum.
+
 1)City şehir alanıdır.
+
 2)Town ilçe alanıdır.
+
 3)Neighborhood mahalle cadde alanıdır.
+
 4)Street sokak alanıdır.
+
 5)BuildingNumber bina numara alanıdır.
+
 6)Floor kat alanıdır.
+
 7)Apartment apartman alanıdır.
+
 8)Descriptions Açıklama alanıdır.
+
 9)PersonId alanımız Persons tablosu ile ilişki kurmamızı sağlar. Böylelikle Persons tablosundaki kullanıcılarla ilişki kurabilir.
+
 ```SQL
 CREATE TABLE [dbo].[Addresses](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -133,13 +161,21 @@ CREATE TABLE [dbo].[Addresses](
 ```
 
 ClassRooms tablosu, sınıfların ilgili alanlarını tutar.
+
 ClassRooms tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum.
+
 1)Name sınıfın adı alanıdır.
+
 2)Capacity sınıfın öğrenci kapasite alanıdır.
+
 3)IsActive sınıfın kullanılabilirlik durumu alanıdır.
+
 4)CreatedDate sınıfın oluşturulma tarih alanıdır.
+
 5)UpdatedDate sınıfın güncellenme tarih alanıdır.
+
 6)HomeroomTeacherId ilgili sınıfın sınıf öğretmen alanıdır.
+
 ```SQL
 CREATE TABLE [dbo].[ClassRooms](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -157,10 +193,15 @@ CREATE TABLE [dbo].[ClassRooms](
 ```
 
 Attendances tablosu, öğrencilerin yoklamasıyla ilgili alanlarını tutar.
+
 Attendances tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum.
+
 1)StudentId öğrenci tablosundaki ilgili öğrencinin alanını tutar.
-1)Date öğrencinin devamsızlık tarihini tutar.
-1)StatusId öğrencinin devamsızlık durumunu tutar.
+
+2)Date öğrencinin devamsızlık tarihini tutar.
+
+3)StatusId öğrencinin devamsızlık durumunu tutar.
+
 ```SQL
 CREATE TABLE [dbo].[Attendances](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -175,7 +216,9 @@ CREATE TABLE [dbo].[Attendances](
 ```
 
 AttendanceStatus tablosu, yoklama durumunun ilgili alanını tutar.
+
 AttendanceStatus tablosundaki name alanın amacı yoklamadaki durumu tutmasıdır. Örnek verecek olursak tam gün, yarım gün veya izinli vb. durumlardır.
+
 ```SQL
 CREATE TABLE [dbo].[AttendanceStatus](
 	[Id] [int] NOT NULL,
@@ -188,11 +231,17 @@ CREATE TABLE [dbo].[AttendanceStatus](
 ```
 
 ClassRoomCourses tablosu, hangi sınıfın hangi derslerinin olduğunu gösterir. Bu sayede sınıfı belli olan öğrencinin dersleride belli olmuş olacak.
+
 ClassRoomCourses tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum.
+
 1)ClassRoomId ilgili sınıfın ilişkisini sağlar.
+
 2)CourseId ilgili dersin ilişkisini sağlar.
+
 3)CreatedDate sınıfın oluşturulma tarih alanıdır.
+
 4)UpdatedDate sınıfın güncellenme tarih alanıdır.
+
 ```SQL
 CREATE TABLE [dbo].[ClassRoomCourses](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -208,12 +257,19 @@ CREATE TABLE [dbo].[ClassRoomCourses](
 ```
 
 Courses tablosu, derslerle ilgili alanını tutar.
+
 Courses tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum
+
 1)Name alanı dersin verilerini tutar.
+
 2)CourseCode ders kodunun verilerini tutar.
+
 3)CreditHours dersin kredi saat alanını tutar.
+
 4)CreatedDate sınıfın oluşturulma tarih alanıdır.
+
 5)UpdatedDate sınıfın güncellenme tarih alanıdır.
+
 ```SQL
 CREATE TABLE [dbo].[Courses](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -230,16 +286,27 @@ CREATE TABLE [dbo].[Courses](
 ```
 
 Courses tablosu, derslerle ilgili alanını tutar.
+
 Courses tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum
+
 1)StudentId alanı öğrenci tablosu ile ilişki kurmayı sağlar. Böylelikle hangi öğrencinin sınavı olduğu belirlenmiş olur.
+
 2)CourseId alanı öğrencinin hangi dersin sınavı olduğu belirtilir.
+
 3)TeacherId alanı yapılan sınavların hangi öğretmene ait olduğunu belirler. Öğretmen tablosu ile ilişki kurar.
+
 4)ExamDate alanı sınav tarihi verilerini tutar.
+
 5)ExamTypeId burada sınav tipi tablosu ile ilişki kurar. Buradaki amaç öğrencinin sınav tipini belirtmektir.
+
 6)ExamScore alanı öğrencinin almış olduğu puanı tutar.
+
 7)CreatedDate sınıfın oluşturulma tarih alanıdır.
+
 8)UpdatedDate sınıfın güncellenme tarih alanıdır.
+
 9)Percentage alanı ise sınavların yüzde değerlerini tutar. Örn yazılı sınavlar ders notunun %70' ini etkiler.
+
 ```SQL
 GO
 CREATE TABLE [dbo].[Exams](
@@ -261,10 +328,15 @@ CREATE TABLE [dbo].[Exams](
 ```
 
 ExamTypes tablosu, sınavın tipleriyle ilgili alanını tutar.
+
 ExamTypes tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum
+
 1)Name sınav tipinin alanını tutar.
+
 2)CreatedDate sınıfın oluşturulma tarih alanıdır.
+
 3)UpdatedDate sınıfın güncellenme tarih alanıdır.
+
 ```SQL
 CREATE TABLE [dbo].[ExamTypes](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -279,7 +351,9 @@ CREATE TABLE [dbo].[ExamTypes](
 ```
 
 Facilities tablosu, ilgili sınıfın imkanların alanlarını tutar.
+
 Örnek verecek olursak 6-A sınıfında akıllı tahta, projeksiyon ve bilgisayar vb. imkanlar bulunuyor.
+
 ```SQL
 CREATE TABLE [dbo].[Facilities](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -293,6 +367,7 @@ CREATE TABLE [dbo].[Facilities](
 ```
 
 Roles tablosu, Persons tablosundaki kullanıcıların rollerini tutar. Örnek verecek olursak müdür,öğretmen veya öğrenci gibi verileri tutar.
+
 ```SQL
 CREATE TABLE [dbo].[Roles](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -305,12 +380,19 @@ CREATE TABLE [dbo].[Roles](
 ```
 
 SchoolManagers tablosu, okulun müdür veya müdür yardımcıssı alanlarını tutar.
+
 SchoolManagers tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum
+
 1)PersonId alanı Persons tablosundaki ilgili kullanıcı ile ilişki kurmamızı sağlar.
+
 2)StartDate alanı okul yöneticilerinin işe başlama tarihini tutar.
+
 3)EndDate alanı okul yöneticilerinin işten ayrılma tarihini tutar.
+
 4)Salary alanı maaşları tutar.
+
 5)Graduation alanı okul yöneticilerinin mezuniyet bilgisini tutar.
+
 ```SQL
 CREATE TABLE [dbo].[SchoolManagers](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -327,9 +409,13 @@ CREATE TABLE [dbo].[SchoolManagers](
 ```
 
 TeacherClassRooms tablosu, Öğretmenlerin ilgili sınıfların alanını tutar.
+
 TeacherClassRooms tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum
+
 1)TeacherId alanı sayesinde ilgili öğretmenin ilişkisini kuruyoruz.
+
 2)ClassRoomId alanında ise ilişkisini kurmuş olduğumuz öğretmenin birden fazla sınıflarda ilişki kurmamızı sağlıyor.
+
 ```SQL
 CREATE TABLE [dbo].[TeacherClassRooms](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -343,11 +429,17 @@ CREATE TABLE [dbo].[TeacherClassRooms](
 ```
 
 TeacherCourses tablosu, öğretmenlerin birden fazla ders seçebilmelerini sağlıyoruz.
+
 TeacherCourses tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum
+
 1)TeacherId alanı öğretmen tablosu ile ilişki kurmamızı sağlıyor.
+
 2)CourseId alanı ders tablosu ile ilişki kurmamızı sağlıyor. Böylelikle Hanhi öğretmenin hangi dersleri seçmiş olduğunu görebiliyoruz.
+
 3)CreatedDate sınıfın oluşturulma tarih alanıdır.
+
 4)UpdatedDate sınıfın güncellenme tarih alanıdır.
+
 ```SQL
 CREATE TABLE [dbo].[TeacherCourses](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -363,6 +455,7 @@ CREATE TABLE [dbo].[TeacherCourses](
 ```
 
 Aşağıda oluşturduğumuz prosedure sayesinde Persons tablomuza hızlıca kayıt yapabiliriz. 
+
 ```SQL
 Create PROCEDURE [dbo].[CreatePerson]
 	@firstName VARCHAR(50),
@@ -391,6 +484,7 @@ END
 ```
 
 Aşağıda oluşturduğumuz prosedure sayesinde Stundents tablomuza hızlıca kayıt yapabiliriz. 
+
 ```SQL
 create PROCEDURE [dbo].[CreateStudent]
 	@personId int,
@@ -413,6 +507,7 @@ END
 ```
 
 Aşağıda oluşturduğumuz prosedure sayesinde Teachers tablomuza hızlıca kayıt yapabiliriz. 
+
 ```SQL
 CREATE PROCEDURE [dbo].[CreateTeacher]
 	@personId int,
@@ -435,6 +530,7 @@ END
 ```
 
 Aşağıda oluşturduğumuz View sayesinde Öğrenci ve öğrencinin bağlı olduğu sınıfları hızlıca sorgulayabiliriz.
+
 ```SQL
 SET ANSI_NULLS ON
 GO
@@ -446,6 +542,7 @@ left join ClassRooms cr ON s.ClassRoomId = cr.Id
 ```
 
 Aşağıda oluşturduğumuz View sayesinde öğretmenin detaylarını hızlıca sorgulayabiliriz.
+
 ```SQL
 SET ANSI_NULLS ON
 GO
