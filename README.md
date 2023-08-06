@@ -350,92 +350,98 @@ CREATE TABLE [dbo].[TeacherCourses](
 ) ON [PRIMARY]
 ```
 
+Aşağıda oluşturduğumuz prosedure sayesinde Persons tablomuza hızlıca kayıt yapabiliriz. 
 ```SQL
-CREATE TABLE [dbo].[TeacherCourses](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[TeacherId] [int] NOT NULL,
-	[CourseId] [int] NOT NULL,
-	[CreatedDate] [datetime] NOT NULL,
-	[UpdatedDate] [datetime] NULL,
- CONSTRAINT [PK_TeacherCourses] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
+Create PROCEDURE [dbo].[CreatePerson]
+	@firstName VARCHAR(50),
+	@lastName VARCHAR(50),
+	@identityNumber CHAR(11),
+	@phoneNumber VARCHAR(MAX),
+	@email VARCHAR(150),
+	@birthday datetime,
+	@gender VARCHAR(10),
+	@roleId int,
+	@photo VARCHAR(MAX)
+AS
+BEGIN	
+	SET @phoneNumber = REPLACE(@phoneNumber, ' ', '');
+	SET @firstName = REPLACE(@firstName, ' ', '');
+	SET @firstName = UPPER(@firstName);
+	SET @lastName = REPLACE(@lastName, ' ', '');
+	SET @lastName = UPPER(@lastName);
+
+	INSERT INTO Persons Values(
+	@firstName,@lastName ,
+	@identityNumber,@phoneNumber ,@email ,
+	@birthday,@gender ,@roleId ,@photo,GETDATE(), null)
+					
+END
 ```
 
-
+Aşağıda oluşturduğumuz prosedure sayesinde Stundents tablomuza hızlıca kayıt yapabiliriz. 
 ```SQL
-CREATE TABLE [dbo].[TeacherCourses](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[TeacherId] [int] NOT NULL,
-	[CourseId] [int] NOT NULL,
-	[CreatedDate] [datetime] NOT NULL,
-	[UpdatedDate] [datetime] NULL,
- CONSTRAINT [PK_TeacherCourses] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
+create PROCEDURE [dbo].[CreateStudent]
+	@personId int,
+	@fatherName varchar(50),
+	@motherName varchar(50),
+	@EmergencyContact VARCHAR(13),
+	@classRoomId int
+AS
+BEGIN	
+
+	INSERT INTO Students Values(
+	@personId ,
+	@fatherName ,
+	@motherName ,
+	null ,
+	@EmergencyContact,
+	@classRoomId )
+					
+END
 ```
 
-
+Aşağıda oluşturduğumuz prosedure sayesinde Teachers tablomuza hızlıca kayıt yapabiliriz. 
 ```SQL
-CREATE TABLE [dbo].[TeacherCourses](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[TeacherId] [int] NOT NULL,
-	[CourseId] [int] NOT NULL,
-	[CreatedDate] [datetime] NOT NULL,
-	[UpdatedDate] [datetime] NULL,
- CONSTRAINT [PK_TeacherCourses] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
+CREATE PROCEDURE [dbo].[CreateTeacher]
+	@personId int,
+	@yearsOfExperience varchar(10),
+	@branch varchar(50),
+	@salary money,
+	@graduation VARCHAR(150)
+AS
+BEGIN	
+
+	INSERT INTO Teachers Values(
+	@personId ,
+	@yearsOfExperience ,
+	@branch ,
+	@salary ,
+	@graduation ,
+	GETDATE(),null)
+					
+END
 ```
 
-
+Aşağıda oluşturduğumuz View sayesinde Öğrenci ve öğrencinin bağlı olduğu sınıfları hızlıca sorgulayabiliriz.
 ```SQL
-CREATE TABLE [dbo].[TeacherCourses](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[TeacherId] [int] NOT NULL,
-	[CourseId] [int] NOT NULL,
-	[CreatedDate] [datetime] NOT NULL,
-	[UpdatedDate] [datetime] NULL,
- CONSTRAINT [PK_TeacherCourses] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create view [dbo].[StudentClassRoomView] as
+select p.FirstName, p.LastName, cr.Name AS Class from Students s left join Persons p on p.Id=s.PersonId
+left join ClassRooms cr ON s.ClassRoomId = cr.Id
 ```
 
-
+Aşağıda oluşturduğumuz View sayesinde öğretmenin detaylarını hızlıca sorgulayabiliriz.
 ```SQL
-CREATE TABLE [dbo].[TeacherCourses](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[TeacherId] [int] NOT NULL,
-	[CourseId] [int] NOT NULL,
-	[CreatedDate] [datetime] NOT NULL,
-	[UpdatedDate] [datetime] NULL,
- CONSTRAINT [PK_TeacherCourses] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-```
-
-```SQL
-CREATE TABLE [dbo].[TeacherCourses](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[TeacherId] [int] NOT NULL,
-	[CourseId] [int] NOT NULL,
-	[CreatedDate] [datetime] NOT NULL,
-	[UpdatedDate] [datetime] NULL,
- CONSTRAINT [PK_TeacherCourses] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create view [dbo].[TeacherDetailView] as
+select p.FirstName,p.LastName,p.Birthday,p.IdentityNumber,p.PhoneNumber,p.Email,t.Branch,t.Salary,a.City,a.Town,a.Neighborhood from Teachers t left join Persons p on t.PersonId=p.Id
+left join Addresses a on a.PersonId=p.Id
 ```
 
 
