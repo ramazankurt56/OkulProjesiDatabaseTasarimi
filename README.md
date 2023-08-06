@@ -7,7 +7,7 @@
 
 
 Persons tablosunu oluşturuyoruz. Buradaki amaçlarımız gereksiz veri tekrarından kaçınmak, Kod karmaşasını azaltmak ve veri konsistansını artırmaktır.
-Persons tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum.
+Persons tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum
 1)FirtsName alanı kullanıcının adı için kullanılır.
 
 2)LastName alanı kullanıcının soyadı için kullanılır.
