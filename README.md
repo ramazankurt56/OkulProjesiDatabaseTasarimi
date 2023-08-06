@@ -8,6 +8,7 @@
 
 Persons tablosunu oluşturuyoruz. Buradaki amaçlarımız gereksiz veri tekrarından kaçınmak, Kod karmaşasını azaltmak ve veri konsistansını artırmaktır.
 Persons tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum
+
 1)FirtsName alanı kullanıcının adı için kullanılır.
 
 2)LastName alanı kullanıcının soyadı için kullanılır.
@@ -15,13 +16,21 @@ Persons tablosundaki alanların amaçlarını sırasıyla aşağıda veriyorum
 3)IdentityNumber kullanıcını TC kimlik numarası alanıdır.
 
 4)PhoneNumber kullanıcının telefon alanıdır.
+
 5)Email kullanıcının mail alanıdır.
+
 6)Birthday kullanıcının doğum tarihidir.
+
 7)Gender kullanıcının cinsiyet alanıdır
+
 8)RoleId kullanıcının rolünü belirler. Örnek verecek olursak kullanıcı öğrenciyse Role tablosundan 1 numaralı Id alması gerekiyor.
+
 9)Photo kullanıcının fotoğraf alanınıdır
+
 10)CreatedDate kayıtı oluşturma tarihi alanıdır.
+
 11)UpdatedDate kayıtı güncelleme tarihi alanıdır.
+
 ```SQL
 CREATE TABLE [dbo].[Persons](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
